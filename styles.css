@@ -150,15 +150,26 @@ p { color: var(--slate-light); }
 }
 .btn-teal:hover { background: var(--teal-hover); }
 
-.btn-outline {
-  border: 1.5px solid var(--teal);
+/* Chained selectors + 2px border: clearer than 1.5px on subpixel layouts */
+.btn.btn-outline,
+a.btn.btn-outline {
+  border: 2px solid var(--teal);
+  border-style: solid;
   color: var(--teal);
   background: transparent;
 }
-.btn-outline:hover {
+.btn.btn-outline:hover,
+a.btn.btn-outline:hover {
   background: rgba(12, 114, 119, 0.08);
   border-color: var(--teal-hover);
   color: var(--teal-hover);
+}
+.service-card a.btn.service-schedule-btn.btn-outline {
+  border: 2px solid var(--teal);
+  border-style: solid;
+}
+.service-card a.btn.service-schedule-btn.btn-outline:hover {
+  border-color: var(--teal-hover);
 }
 
 .btn-ghost {
