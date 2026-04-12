@@ -57,6 +57,47 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .section-dark  { background: var(--dark); }
 .section-teal  { background: var(--teal); }
 
+/* One attribution line per major section */
+.section-ai-disclaimer {
+  margin: 0;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--mid-grey);
+  line-height: 1.45;
+  opacity: 0.92;
+}
+.hero .section-ai-disclaimer {
+  margin-top: 56px;
+  border-top-color: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.42);
+}
+.section.section-dark p.section-ai-disclaimer {
+  border-top-color: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.42);
+}
+.section.section-grey p.section-ai-disclaimer {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+.section.section-teal p.section-ai-disclaimer {
+  border-top-color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.58);
+}
+.section-ai-disclaimer--footer {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.38);
+}
+.footer-inner .section-ai-disclaimer--footer {
+  grid-column: 1 / -1;
+}
+
 /* ── Typography ────────────────────────────────────── */
 h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
 
@@ -108,6 +149,17 @@ p { color: var(--slate-light); }
   color: var(--white);
 }
 .btn-teal:hover { background: var(--teal-hover); }
+
+.btn-outline {
+  border: 1.5px solid var(--teal);
+  color: var(--teal);
+  background: transparent;
+}
+.btn-outline:hover {
+  background: rgba(12, 114, 119, 0.08);
+  border-color: var(--teal-hover);
+  color: var(--teal-hover);
+}
 
 .btn-ghost {
   border: 1.5px solid rgba(255,255,255,0.35);
@@ -474,26 +526,25 @@ p { color: var(--slate-light); }
   border-radius: 50%;
 }
 
-.service-price {
+.service-card-cta {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 14px;
   padding-top: 20px;
   border-top: 1px solid var(--border);
   margin-top: auto;
 }
-.price-label {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  font-weight: 500;
+.service-estimate-note {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
   color: var(--mid-grey);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
-.price-range {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--teal);
+.service-schedule-btn {
+  justify-content: center;
+  align-self: stretch;
+  text-align: center;
+  white-space: normal;
 }
 
 .services-note {
