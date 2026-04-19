@@ -61,6 +61,8 @@
   });
 
   /* ── Smooth scroll for all anchor links ────────── */
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       const target = document.querySelector(this.getAttribute('href'));
@@ -68,7 +70,10 @@
       e.preventDefault();
       const navHeight = nav.offsetHeight;
       const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
-      window.scrollTo({ top: top, behavior: 'smooth' });
+      window.scrollTo({
+        top: top,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      });
     });
   });
 
