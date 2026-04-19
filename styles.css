@@ -281,10 +281,22 @@ a.btn.btn-outline:hover {
   width: auto;
   max-width: min(200px, 46vw);
   display: block;
+  transition: filter var(--transition);
+}
+/* On dark hero: same idea as the hamburger — light monochrome mark */
+.nav:not(.scrolled) .nav-logo .logo-img {
+  filter: brightness(0) invert(1);
+}
+.nav.scrolled .nav-logo .logo-img {
+  filter: none;
 }
 .logo-img--footer {
   height: 34px;
   max-width: 180px;
+}
+/* Footer sits on dark background; keep logo readable */
+.footer-logo .logo-img {
+  filter: brightness(0) invert(1);
 }
 
 .nav-links {
