@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — SaaS Squash</title>
+  <meta name="description" content="Notes on intelligent file architecture, industrial AI, and systems your team can own. From SaaS Squash.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-header fade-in">
+          <p class="mono-label mono-dark">Blog</p>
+          <h1>Structure, discovery, and practice</h1>
+          <p class="section-sub">Short articles on building AI systems that fit industrial and B2B operations—without losing the plot to generic tooling.</p>
+        </div>
+
+        <div class="blog-list">
+          <a href="ai-agent-database-guardrails.html" class="blog-card fade-in">
+            <p class="blog-card-date">April 29, 2026</p>
+            <h2>Nine seconds, no undo: AI agents and data guardrails</h2>
+            <p>What the PocketOS / Cursor / Railway incident highlights about blast radius, backups, and why best practices matter more when AI can reach production.</p>
+          </a>
+
+          <a href="welcome-to-the-blog.html" class="blog-card fade-in">
+            <p class="blog-card-date">March 15, 2026</p>
+            <h2>Welcome to the SaaS Squash blog</h2>
+            <p>What we plan to cover here: file architecture, AI governance, agent news, and lessons from the field.</p>
+          </a>
+        </div>
+
+        <nav class="blog-pagination fade-in" aria-label="Blog pagination">
+          <span class="blog-pagination-info">Page 1 of 1 &middot; 2 posts</span>
+          <span class="blog-pagination-info"></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
