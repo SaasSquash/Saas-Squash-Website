@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+  SaaS Squash — NEW ARTICLE CHECKLIST
+  1. Save a copy as blog/YOUR-SLUG.html (lowercase, hyphens; same slug in links below).
+  2. Replace <title>, meta description, dates, h1, dek, and <article> body.
+  3. Add a card for this post at the TOP of blog/index.html (newest first).
+     Recommended: 6 posts per page. If page 1 exceeds 6 posts, create blog/page-2.html,
+     move older cards there, and add prev/next links in blog-pagination on both pages.
+  4. If this is the NEWEST post, update partials/blog-teaser.html (date, title, excerpt, href).
+  5. Deploy / preview over http(s); file:// will not load partials (see includes.js).
+
+  DELETE this comment block before publishing, or leave as HTML comment.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARTICLE_TITLE — SaaS Squash</title>
+  <meta name="description" content="ONE_OR_TWO_SENTENCES_FOR_SEARCH_AND_SOCIAL">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">MONTH DD, YYYY</p>
+          <h1>ARTICLE_TITLE</h1>
+          <p class="blog-dek">OPTIONAL_ONE_OR_TWO_LINE_SUMMARY_FOR_THE_HEADER.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>Opening paragraph. Replace with your article HTML: use &lt;p&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;ul&gt;/&lt;li&gt;, &lt;a href=""&gt;, &lt;strong&gt;, &lt;code&gt; as needed.</p>
+
+          <h2>Section heading</h2>
+          <p>More body copy.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
