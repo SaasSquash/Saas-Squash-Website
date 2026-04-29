@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You didn't write that code: the LiteLLM supply chain breach — SaaS Squash</title>
+  <meta name="description" content="Mercor, a $10B AI recruiting startup, was breached through LiteLLM—a dependency, not their own code. What B2B teams building on AI frameworks need to do differently.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">April 29, 2026</p>
+          <h1>You didn't write that code: the LiteLLM supply chain breach</h1>
+          <p class="blog-dek">In late March, Mercor—a $10 billion AI recruiting startup—was compromised not through its own application, but through <a href="https://techcrunch.com/2026/03/31/mercor-says-it-was-hit-by-cyberattack-tied-to-compromise-of-open-source-litellm-project/">LiteLLM</a>, an open-source library sitting quietly in its dependency tree. The entry point wasn't the model. It was the plumbing.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>On March 31, 2026, Mercor disclosed a breach that exposed personal records for more than 40,000 contractors, proprietary source code, and recorded video interviews. Mercor's own application code was never directly touched. The attacker—later claimed by extortion group Lapsus$—inserted malicious code into <strong>LiteLLM</strong>, a Y Combinator-backed open-source library that provides a unified interface for routing calls across major language model providers. Mercor was a downstream consumer. Once the poisoned library executed inside their stack, credentials were captured and internal systems were exposed. The window of compromise was measured in hours, but the data was already gone.</p>
+
+          <h2>A trusted dependency became the attack surface</h2>
+          <p>LiteLLM is not an obscure package. It is deployed across thousands of production AI stacks—startups, mid-market SaaS platforms, and enterprise teams alike use it to normalize calls to OpenAI, Anthropic, Google, and others behind a single API. That ubiquity is exactly what made it valuable to attackers. One insertion point, many downstream victims.</p>
+          <p>This is not a novel attack category. SolarWinds, XZ Utils, and the npm ecosystem have taught this lesson before. What is new is the <strong>privilege level</strong> that AI frameworks typically hold. LiteLLM and its peers sit between your application and your model provider. They handle API keys, authentication tokens, and the raw content of prompts and completions—including anything a user typed or a model returned. A compromised AI framework is not just code execution; it is access to the most sensitive data flowing through your product.</p>
+          <p>The Mercor breach also exposed something structural: video interviews conducted through an AI-evaluated hiring pipeline. The AI layer was the product, and the framework powering it became the liability.</p>
+
+          <h2>Why AI tooling is an under-scrutinized attack surface</h2>
+          <p>Most B2B engineering teams apply rigorous vendor review to databases, identity providers, and payment processors. Few apply the same scrutiny to AI libraries. The reasons are understandable: the ecosystem moved fast, the libraries feel lightweight, and the trust assumption is that an open-source project with GitHub stars and VC backing is safe. The Mercor incident refutes that assumption directly.</p>
+          <p>Consider what a typical AI framework can reach in your stack:</p>
+          <ul>
+            <li><strong>Model provider API keys</strong> — often with no per-request spend limits, capable of running up large bills or exfiltrating prompt data.</li>
+            <li><strong>User-submitted content</strong> — documents, queries, uploaded files that pass through the framework before reaching the model.</li>
+            <li><strong>Internal retrieval systems</strong> — RAG pipelines often connect the AI framework directly to databases or vector stores without a separate access boundary.</li>
+            <li><strong>Output post-processing</strong> — whatever the model returns passes back through the same library, making it a natural interception point for exfiltration.</li>
+          </ul>
+          <p>LLM providers run at 99–99.5% uptime, meaningfully below general cloud infrastructure. That brittleness pressures teams to adopt routing and fallback libraries quickly—often faster than security reviews can keep pace.</p>
+
+          <h2>What to do before your next deployment</h2>
+          <p>Mercor is a cautionary tale, not a death sentence for AI frameworks. The pattern is manageable with the same controls that protect any critical dependency—applied consistently. A practical checklist:</p>
+          <ul>
+            <li><strong>Pin versions and review changelogs</strong> before every update to AI framework packages. Treat a minor version bump the same way you would treat a dependency change in your auth library.</li>
+            <li><strong>Scope API key permissions narrowly.</strong> Model provider credentials passed to a framework should have the minimum permissions required—read-only where possible, no admin access, hard spend caps enforced at the provider level.</li>
+            <li><strong>Isolate the AI layer at the network boundary.</strong> The process or container running your AI framework should not have direct access to your primary data stores. Introduce an explicit service boundary with its own auth.</li>
+            <li><strong>Audit what your framework touches at rest.</strong> Does it log prompts or completions? Where? Who can read those logs? Could a malicious version silently ship them elsewhere?</li>
+            <li><strong>Monitor for anomalous model API calls.</strong> Sudden spikes in token usage, unexpected model endpoints, or calls at unusual hours are signals worth alerting on—not just cost tracking.</li>
+            <li><strong>Subscribe to security advisories for every AI library in your stack</strong>, not just the headline dependencies. LiteLLM had no equivalent of an npm audit workflow pushing the compromise to the surface before Mercor was hit.</li>
+          </ul>
+          <p>At SaaS Squash we see the AI stack as an extension of your systems boundary—same risk surface, different vocabulary. If you are building on open-source AI tooling and have not run a dependency audit with security in mind, now is the right time. The conversation costs less than the breach.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
