@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When the meter starts: GitHub Copilot's credits model and the vendor lock-in problem — SaaS Squash</title>
+  <meta name="description" content="GitHub Copilot's shift to AI credits for advanced features is a concrete preview of how single-vendor AI dependency becomes a procurement trap — and what B2B companies can do about it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">May 2, 2026</p>
+          <h1>When the meter starts: GitHub Copilot's credits model and the vendor lock-in problem</h1>
+          <p class="blog-dek">GitHub Copilot just shifted how it bills for its most capable features. The invoice math matters less than what it reveals: once AI tooling is load-bearing, pricing changes are fait accompli — unless you built a way out.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>GitHub <a href="https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises">updated its billing model</a> for Copilot Business and Enterprise. Code completions stay unlimited. But Chat sessions, CLI commands, agent runs, Spaces, Spark interactions, and third-party integrations now consume AI credits at <strong>$0.01 each</strong>. Each seat includes a monthly allowance — 1,900 credits for Business, 3,900 for Enterprise — and then the meter runs. The default behavior once those credits are exhausted is unrestricted spend; organizations have to actively configure budget caps at the enterprise, org, cost-center, or individual level to stop it.</p>
+
+          <p>Teams that treated Copilot as a flat-rate subscription now have a variable cost that scales with exactly the features that make AI tooling valuable: agentic workflows, multi-turn chat, automated CLI tasks. That combination — high utility, high lock-in, variable pricing — is worth examining carefully.</p>
+
+          <h2>The features you depend on are the ones that cost more</h2>
+          <p>Credits don't touch basic autocomplete. They target the workflows teams have built into their daily practice: extended Chat for code review, CLI automation in CI pipelines, cloud agents running multi-step tasks. GitHub's reasoning is straightforward — more capable features require more compute. But the practical consequence is that the deeper your team's reliance on Copilot's advanced capabilities, the more cost exposure you carry at that $0.01/credit rate.</p>
+          <p>Visibility is the first problem. Without active monitoring, credit consumption is invisible until a billing cycle closes. A team running agents on large codebases or using Copilot Chat heavily across a 50-person engineering org can exhaust included credits well before month-end. The controls exist, but they require intent — and most organizations won't configure them until they see an unexpected bill.</p>
+
+          <h2>Adoption without an exit is a negotiating trap</h2>
+          <p>The Copilot credits shift is a data point, not an anomaly. When a vendor's tooling becomes infrastructure — integrated into IDEs, baked into onboarding, wired into CI — pricing changes arrive as facts, not proposals. You adopted it at one cost structure; you run it at another.</p>
+          <p>Enterprises rarely calculate switching cost until they face a price negotiation. By then the answer is usually: absorb the increase, because rebuilding workflows around a different provider costs more. That is vendor lock-in in practice — not a contract clause, but accumulated dependency that makes exit prohibitively expensive. GitHub knows this. Every AI vendor building towards enterprise knows this. The billing model change is a preview of the leverage equation to come.</p>
+
+          <h2>Agnosticism is an architecture decision, not a preference</h2>
+          <p>Treating AI providers as interchangeable compute — the same way mature infrastructure teams treat cloud regions — requires deliberate design. That means routing layers, abstracted APIs, and usage visibility across providers <em>before</em> you need them. Organizations that build those foundations now can negotiate from strength; those that don't will negotiate from dependency.</p>
+          <p>SaasSquash AI helps B2B companies build that foundation. We map your current AI surface, identify where single-vendor exposure is accumulating, and design integrations that let you swap or blend providers as models and pricing evolve. The Copilot credits shift is the right moment to ask: if this vendor changes terms again next year, what does it cost you to move?</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
