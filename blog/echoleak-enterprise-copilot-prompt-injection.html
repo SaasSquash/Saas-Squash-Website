@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When your inbox is the attack surface: EchoLeak and enterprise AI trust — SaaS Squash</title>
+  <meta name="description" content="EchoLeak (CVE-2025-32711) proved that RAG-based enterprise copilots can be weaponized via a single email. What the attack reveals about trust boundaries in enterprise AI — and what to do about it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">May 4, 2026</p>
+          <h1>When your inbox is the attack surface: EchoLeak and enterprise AI trust</h1>
+          <p class="blog-dek">A carefully formatted email lands in an executive's Outlook inbox — no attachment, no suspicious link. Weeks later, confidential SharePoint files exit the organization. EchoLeak (CVE-2025-32711) confirmed what many suspected: RAG-based enterprise copilots have a trust boundary problem, and prompt injection is how attackers exploit it.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>In January 2025, a researcher at Aim Labs sent a carefully crafted email to a test inbox. The recipient never opened it. But when they later asked <a href="https://thehackernews.com/2025/06/zero-click-ai-vulnerability-exposes.html">Microsoft 365 Copilot</a> a routine work question, the AI exfiltrated confidential organizational data to an attacker-controlled server. No click required.</p>
+
+          <p>That was EchoLeak — CVE-2025-32711, CVSS&nbsp;9.3. Microsoft patched it in June 2025. The mechanism it exposed is not a solved problem. It is a structural risk that follows any enterprise AI assistant blending untrusted external input with privileged organizational data retrieval.</p>
+
+          <h2>How an email becomes an extraction tool</h2>
+          <p>EchoLeak chained four weaknesses in Copilot's architecture. A malicious email arrived in the target's Outlook inbox. When the user later queried Copilot on a related topic, the RAG system retrieved that email — it appeared topically relevant. Hidden instructions inside the email, formatted as ordinary prose, were now inside the model's prompt. Copilot followed them: locate confidential files from SharePoint, Teams, or OneDrive, and exfiltrate them via a reference-style Markdown image tag pointing to an external server.</p>
+          <p>Microsoft's XPIA (cross-prompt injection attempt) classifier was built to stop exactly this. It didn't. The attacker had phrased the instructions to resemble legitimate user content, and the classifier passed them through. Every downstream privilege Copilot held — access to chat history, OneDrive, SharePoint — became available to the attacker without the user doing anything at all.</p>
+
+          <h2>The trust boundary is new, and most organizations haven't drawn it</h2>
+          <p>RAG-based enterprise assistants work by pulling corporate content into the model's context window. That is what makes them useful: they can answer questions about your own organization. It also means anything in the retrieval corpus — including untrusted external input — becomes something the AI acts on.</p>
+          <p>Traditional security draws a hard line between data and execution. An email cannot run code. For an LLM copilot, text <em>is</em> instruction. EchoLeak was the first confirmed production exploit where that line collapsed inside an enterprise product, at scale: tens of millions of Microsoft 365 Copilot users were potentially reachable via a single outbound email.</p>
+
+          <h2>What governance looks like now</h2>
+          <p>The patch is deployed. The attack class is not closed. If your team has a copilot in production, treat the following as a minimum baseline:</p>
+          <ul>
+            <li><strong>Audit retrieval scope:</strong> Every indexed source — every inbox, SharePoint library, Teams channel — is a potential injection surface. Know exactly what Copilot can reach.</li>
+            <li><strong>Monitor outbound AI calls:</strong> Anomalous external image loads or link fetches from within AI chat sessions are now a real threat signal.</li>
+            <li><strong>Red-team your classifier defenses:</strong> XPIA and similar controls failed here. Don't assume they hold against your actual document corpus and user patterns.</li>
+            <li><strong>Minimize ambient access:</strong> Copilot should have read access to what users actually need, not everything the organization has ever indexed.</li>
+            <li><strong>Track vendor patch timelines:</strong> CVE-2025-32711 was a server-side fix. The next variant may require a client update — and enterprise deployment lag is measured in weeks, not hours.</li>
+          </ul>
+          <p>When enterprise AI retrieves your most sensitive content to answer questions, it simultaneously becomes the most capable exfiltration channel an attacker has had access to. Designing controls around that reality is not optional — it is governance.</p>
+
+          <p>SaaS Squash helps B2B companies map where AI assistants touch sensitive data and build the access controls and monitoring to match. If you have deployed a copilot and haven't run a retrieval scope audit, that is the right conversation to start.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
