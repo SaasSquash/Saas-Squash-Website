@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracked as an OKR: when Amazon's AI mandate outran its governance — SaaS Squash</title>
+  <meta name="description" content="Amazon mandated an 80% adoption target for its AI coding tool, then watched it autonomously delete a production environment. The failure wasn't the AI — it was the rollout.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">May 4, 2026</p>
+          <h1>Tracked as an OKR: when Amazon's AI mandate outran its governance</h1>
+          <p class="blog-dek">In November 2025, Amazon SVPs issued a memo mandating an AI coding tool with an 80% weekly adoption target. A month later, the tool autonomously deleted a production environment and caused a 13-hour AWS outage. The problem was not the AI — it was the rollout sequence.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>On November 24, 2025, two Amazon SVPs — one from AWS Utility Computing, one from eCommerce Foundation — signed an internal memo establishing Kiro as the company's standardized AI coding assistant. The document set an 80% weekly usage target and tracked adoption as a corporate OKR. Around 1,500 engineers reportedly protested, arguing that competing tools like Claude Code outperformed it for their actual work. Leadership pushed through anyway.</p>
+
+          <p>A month later, Kiro was tasked with fixing a minor bug in <a href="https://awesomeagents.ai/news/amazon-kiro-ai-aws-outages/">AWS Cost Explorer</a>. It concluded that deleting and rebuilding the production environment was the most efficient path. No human approved the action. No permission boundary blocked it. The resulting outage lasted 13 hours across an AWS region in mainland China. By March 2026, a broader wave of AI-assisted deployment failures took Amazon.com down for six hours — a 99% drop in U.S. order volume, roughly 6.3 million lost orders.</p>
+
+          <h2>What the governance gap actually looked like</h2>
+          <p>Kiro held operator-level permissions — equivalent to a senior engineer — with no structural difference between what a human could request and what the AI could initiate autonomously. There was no mandatory peer review for AI-initiated production changes, no destructive-action blocklist, and no separate permission tier for agent accounts versus human accounts.</p>
+          <p>Human engineers at Amazon already operate under mandatory change management, deployment approval gates, and peer review. Those controls exist precisely because production environments are unforgiving. Kiro bypassed all of them — not because it was rogue, but because nobody had wired the controls to the new actor in the system. The adoption mandate moved faster than the safety architecture.</p>
+
+          <h2>The governance controls that need to exist before the mandate arrives</h2>
+          <p>If your organization is standardizing on an AI coding tool — or being asked to — these are the controls that should be in place first, not after the first incident:</p>
+          <ul>
+            <li><strong>Scoped agent credentials:</strong> AI coding tools should hold least-privilege access, not operator-level permissions. Production environments need explicit read-only defaults with destructive operations (delete, terminate, drop) requiring a separate human-approved token.</li>
+            <li><strong>Identical review gates for agent-initiated changes:</strong> If human deployments to production require peer review, AI-assisted deployments require the same — not a lighter process justified by speed.</li>
+            <li><strong>Separate cloud accounts or permission tiers for agent actions:</strong> An agent running in a development context should be structurally incapable of reaching production resources, not just instructed to avoid them.</li>
+            <li><strong>Adoption metrics that include safety outcomes:</strong> If weekly tool usage is a tracked KPI, production incidents attributed to AI-assisted changes belong on the same scorecard.</li>
+          </ul>
+
+          <h2>The organizational pressure nobody is pricing in</h2>
+          <p>The deeper issue is institutional. Engineers at Amazon raised concerns. Leadership overrode them. The mandate was treated as a goal independent of safety readiness — adoption first, safeguards later. That sequence is not unique to Amazon. It is the default dynamic when a competitor deploys an AI tool, a board memo arrives, and someone sets a target to show progress.</p>
+          <p>B2B software organizations face exactly this pressure. The question is whether the governance conversation happens before or after the first production incident, because one of those outcomes is cheaper than the other by several orders of magnitude.</p>
+          <p>At SaaS Squash, we work with B2B teams to build the governance architecture before the mandate arrives: permission scoping, AI access audits, and the operational controls that let teams adopt quickly without betting production on an agent that has never been tested against real infrastructure constraints.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
