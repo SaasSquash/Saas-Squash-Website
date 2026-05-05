@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building a Digital Brain for Your Business: Neural Linkage .md File Structures for AI Memory — SaaS Squash</title>
+  <meta name="description" content="A malicious npm package in March 2025 didn't steal a team's code — it rewrote their AI agent's instructions. The attack worked because a markdown file was load-bearing. Here's how to build that architecture deliberately.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">May 5, 2026</p>
+          <h1>Building a Digital Brain for Your Business: Neural Linkage .md File Structures for AI Memory</h1>
+          <p class="blog-dek">A malicious npm package in March 2025 didn't steal a team's code — it rewrote their AI agent's instructions by editing a single markdown file. The attack worked because that file was load-bearing institutional memory. Here's how to build that architecture deliberately.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>In March 2025, a developer installed a package from npm. The <code>postinstall</code> hook silently edited <code>MEMORY.md</code> — a single markdown file that Claude Code loads automatically at session start. Within one session, the compromised agent was recommending that teams store API keys in committed source files and steering them away from secrets managers. Cisco's researchers, who found the attack, <a href="https://blogs.cisco.com/ai/identifying-and-remediating-a-persistent-memory-compromise-in-claude-code">called it a persistent memory compromise</a>. The more instructive framing: it worked because the file had real authority over agent behavior.</p>
+
+          <p>That's the architecture worth understanding — not as an attack surface to fear, but as a tool to build deliberately.</p>
+
+          <h2>How a context file becomes institutional memory</h2>
+
+          <p>CLAUDE.md, AGENTS.md, MEMORY.md — the names vary by tool, but the mechanism is identical. A markdown file placed in the project root is loaded verbatim into the agent's context window at session start. No vector database, no fine-tuning, no infrastructure. The file is the persistent layer.</p>
+
+          <p>Teams found this solves a concrete production problem. An AI that forgets every session wastes time. After months on a production codebase, engineers were still correcting agents: we use <code>pnpm</code>, not <code>npm</code>; the test command is <code>make test-integration</code>. A federated set of markdown files — one per domain, maintained by the team that owns the domain — eliminated that overhead entirely. A January 2026 study covering 124 pull requests found that <a href="https://arxiv.org/html/2601.20404v2">AGENTS.md files cut median task completion time by 28.64%</a> and token consumption by 16.58%.</p>
+
+          <p>AGENTS.md is now stewarded by the Linux Foundation's Agentic AI Foundation, adopted in 60,000+ open-source projects, and supported by Copilot, Cursor, Devin, Codex, and others. It is becoming infrastructure. What Cisco found is what always happens when something becomes infrastructure: it gets targeted.</p>
+
+          <h2>One team's 77-page operational wiki</h2>
+
+          <p>The most instructive production implementation comes from a DevOps engineer who <a href="https://tomnguyenit.medium.com/i-built-karpathys-llm-wiki-for-my-day-job-here-s-what-actually-works-0d4ec6d1e433">applied Andrej Karpathy's LLM Wiki pattern</a> to day-to-day AWS operations across dozens of accounts. The architecture has three layers: a <code>raw/</code> directory of immutable source documents — Confluence exports, architecture diagrams, meeting transcripts — that the agent reads but never writes; a <code>wiki/</code> directory of 77 LLM-maintained markdown pages across nine knowledge domains that the agent owns; and a root <code>AGENTS.md</code> that defines naming conventions, frontmatter standards, and cross-linking requirements.</p>
+
+          <p>The compounding effect was real. Ingesting one PR review standards document automatically created cross-references to deployment workflow, change management, and Terraform standards — connections a human wouldn't maintain consistently. When queried about deployment process, the agent returned specifics about progressive rollout order and change request gates without re-reading any source document.</p>
+
+          <p>Two failure modes emerged that are worth planning for. The agent never checked its own wiki unprompted — every retrieval required an explicit instruction. And at 77 pages, index summaries became too coarse: the agent was selecting the wrong wiki page because one-line descriptions couldn't distinguish close topics. Both problems have architectural fixes, but neither fixes itself.</p>
+
+          <h2>How to structure your own neural linkage system</h2>
+
+          <p>The pattern works best when the structure is explicit from the start. If you're building this for a B2B team:</p>
+
+          <ul>
+            <li><strong>Start with one authoritative root file.</strong> Your <code>AGENTS.md</code> or <code>CLAUDE.md</code> is the entry point. It should define scope, naming conventions, and what other files exist. Keep it under 200 lines — beyond that, agents lose the thread.</li>
+            <li><strong>Federate ownership.</strong> Each functional domain — engineering, security, operations — maintains its own slice. The root file imports or references them. Domain teams update their slice; they don't need to own the whole system.</li>
+            <li><strong>Separate source from synthesis.</strong> Raw documents go in one directory; the AI's synthesized wiki pages go in another. Don't let the agent overwrite source material.</li>
+            <li><strong>Make lesson capture explicit.</strong> The agent will not save reusable lessons autonomously. Build a convention: after a non-trivial task, prompt the agent to flag what should be added to the wiki.</li>
+            <li><strong>Treat write access as a permission boundary.</strong> The Cisco attack worked because a supply chain payload could write to the file the agent trusted. Separate your human-reviewed instructions from AI-maintained memory. Consider keeping the root context file in version control with normal review gates.</li>
+          </ul>
+
+          <p>The Karpathy framing is precise: Obsidian is the IDE, the LLM is the programmer, the wiki is the codebase. Codebases don't improve by accident. Neither do wikis.</p>
+
+          <p>SaaS Squash works with B2B teams to map where AI tools touch operational knowledge and design the file architectures and access controls to match. If your agents are starting from scratch every session, that is the right problem to solve first.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
