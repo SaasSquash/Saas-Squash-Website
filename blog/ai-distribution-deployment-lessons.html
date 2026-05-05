@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Six months to failure: what Amazon's Blue Jay tells us about distribution AI — SaaS Squash</title>
+  <meta name="description" content="Amazon killed its Blue Jay warehouse robot less than six months after launch. The real lesson isn't about robots — it's about how integration failures end AI projects in distribution operations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">May 5, 2026</p>
+          <h1>Six months to failure: what Amazon's Blue Jay tells us about distribution AI</h1>
+          <p class="blog-dek">Amazon launched Blue Jay in October 2025 as a ceiling-mounted robot built to redefine same-day fulfillment. By February 2026 the project was dead. The cause wasn't the hardware — it was what every distribution AI project runs into eventually: the integration didn't hold.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>Blue Jay was announced with genuine ambition. A ceiling-mounted, multi-limbed robot developed in under a year using digital twins, purpose-built for Amazon's Local Vending Machine same-day warehouses. Then <a href="https://techcrunch.com/2026/02/18/amazon-halts-blue-jay-robotics-project-after-less-than-six-months/">TechCrunch reported in February 2026</a> that the project had been quietly shelved. Amazon confirmed it. Six months, a buried headline, and a pivot to a successor system called Flex Cell. The stated reasons — manufacturing cost, workflow fit — pointed at the same problem that sinks AI deployments in distribution businesses far smaller than Amazon: the system was difficult to incorporate into how work actually happens.</p>
+
+          <p>The ceiling-mounting wasn't incidental to the failure. Bolting hardware to the ceiling of a warehouse commits you to a fixed configuration. There is no easy reconfiguration when the workflow shifts, volumes change, or the WMS needs updating. Blue Jay's integration surface was rigid by design, and rigid integration is exactly what distribution operations cannot absorb.</p>
+
+          <h2>Why the stack kills more projects than the algorithm</h2>
+          <p>Blue Jay's failure is a microcosm of a broader pattern across distribution and logistics. According to DHL's 2025 Logistics Trend Radar, 68% of warehouse operators identify workforce digital literacy as the primary barrier to AI deployment — not model accuracy, not hardware cost. Gartner found that 23% of AI supply chain control tower projects stalled in 2025 specifically because of cross-functional alignment failures, not technology gaps. Meanwhile, 65% of logistics operators remain stuck at ad-hoc AI experimentation because their legacy TMS and WMS platforms were never designed to synchronize with real-time orchestration layers.</p>
+
+          <p>The pattern is consistent: distributors buy or build an intelligent system, it performs well in isolation, and then it meets the existing stack. The WMS sends batch updates on a schedule that doesn't match the AI's decision cycle. The ERP tracks inventory at a granularity the model wasn't trained on. Warehouse staff work around the system rather than with it because the UI doesn't fit their actual workflow. Integration friction compounds until the project stalls or gets canceled.</p>
+
+          <p>Amazon had the resources to absorb Blue Jay and redirect its technology into Flex Cell. A regional wholesale distributor running 40,000 SKUs and a fifteen-year-old WMS does not have the same margin for error.</p>
+
+          <h2>The deployment checklist that actually matters</h2>
+          <p>The practitioners who ship distribution AI that sticks are not necessarily using better models. They are making different decisions before go-live:</p>
+          <ul>
+            <li><strong>Audit integration points before selecting technology.</strong> Map every system the AI will need to read from or write to — WMS, ERP, TMS, carrier feeds, labor management. If any of those connections require batch sync, the AI's real-time value is already capped.</li>
+            <li><strong>Stress-test reconfiguration cost.</strong> Blue Jay couldn't be moved once installed. Before committing to any distribution AI architecture, define what it costs to change a workflow assumption six months in. If the answer is "rebuild from scratch," that is a risk, not a feature.</li>
+            <li><strong>Get floor staff in the design loop early.</strong> DHL's workforce literacy finding is not about training gaps — it's about systems built without operational context. The workers who process exceptions and handle edge cases know what the algorithm will miss. They need to be consulted before the model is trained, not after deployment fails.</li>
+            <li><strong>Measure integration latency, not just model accuracy.</strong> A demand forecast that's 90% accurate but arrives six hours after the pick list is generated has zero operational value. Instrument the pipeline end-to-end from day one.</li>
+            <li><strong>Define a rollback trigger.</strong> Determine before launch what signal will tell you the system is not working and what you will do when you see it. Projects without this tend to accumulate failure quietly until the cost is too large to absorb.</li>
+          </ul>
+
+          <h2>What Blue Jay's successor reveals about the right approach</h2>
+          <p>Amazon didn't abandon the technology — it redirected Blue Jay's components into Flex Cell, which is designed around its new Orbital warehouse architecture. That is the correct pattern: build the automation around the operational model, not the other way around. Orbital defines how work flows; Flex Cell fits inside it. For distribution businesses outside Amazon's scale, this means sequencing the project so the AI layer follows workflow redesign, not the other way around. Drop an AI demand forecasting layer onto an unstructured replenishment process and the model learns the chaos. Redesign the process first, then instrument it.</p>
+
+          <p>Distribution AI will keep generating headlines — some triumphant, some like Blue Jay. The practitioners who build durable systems will be the ones who treated the integration architecture as the primary design constraint from the start, not an afterthought for the implementation phase.</p>
+
+          <p>SaaS Squash helps B2B distribution companies map the integration gaps before deployment, not after. If your team is evaluating AI tooling for warehouse, demand planning, or supply chain operations, that assessment is the right place to start.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
