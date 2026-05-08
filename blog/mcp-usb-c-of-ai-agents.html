@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP Is Quietly Becoming the USB-C of AI Agents — SaaS Squash</title>
+  <meta name="description" content="ServiceNow, UiPath, and Cloudflare all shipped MCP support in the same week. When three enterprise platforms converge on the same protocol without coordinating, a standard is forming.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">May 8, 2026</p>
+          <h1>MCP Is Quietly Becoming the USB-C of AI Agents</h1>
+          <p class="blog-dek">In the first week of May 2026, ServiceNow, UiPath, and Cloudflare all shipped native MCP support — without coordinating. When three enterprise platforms converge on the same protocol in a single week, a standard is forming.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>On May 6, 2026, three enterprise software companies shipped the same integration within days of each other. ServiceNow announced Action Fabric at Knowledge 2026: an open platform that exposes its entire workflow and CMDB surface as MCP endpoints. Cloudflare wrapped Agents Week by embedding MCP tooling natively into its developer infrastructure. UiPath shipped Maestro and Agent Builder with MCP as the default interoperability layer for agentic automation. No press release coordinated the timing. They didn't need to.</p>
+
+          <p>Model Context Protocol (MCP), originally developed by Anthropic, defines a standard way for AI agents to invoke tools, share context, and call sub-agents across vendor implementations. The protocol has existed for over a year. What happened this week is not the arrival of MCP — it is the moment enterprise infrastructure started treating it as load-bearing.</p>
+
+          <h2>The connector problem that kept recurring</h2>
+
+          <p>Before USB-C, every laptop manufacturer shipped its own power brick. The hardware worked. The ecosystem was a mess: proprietary cables, adapters that failed, inventory headaches for IT. USB-C didn't win on technical superiority alone — it won because enough manufacturers standardized simultaneously, making fragmentation more expensive than alignment.</p>
+
+          <p>AI agents hit the same inflection point. Every major platform built its own agent framework with its own tool-call format, context API, and memory model. Building a multi-agent system across two vendors meant writing custom glue code that broke on every quarterly SDK update. Every custom bridge is a liability. The question was always whether the cost of alignment would fall low enough to force convergence.</p>
+
+          <p>This week suggests it has.</p>
+
+          <h2>What ServiceNow actually shipped</h2>
+
+          <p>Action Fabric is the clearest case study. It exposes ServiceNow's workflow engine and CMDB as MCP endpoints. An external agent — built on Claude, GPT, or a private model — can query a configuration item, trigger a change approval, or read an incident record without a ServiceNow-specific SDK. The same payload format works from any MCP-compatible orchestrator.</p>
+
+          <p>UiPath's Maestro follows the same model: MCP as the language agents use when handing work off to automation bots. Cloudflare adds edge-native routing so MCP calls resolve regionally rather than round-tripping to a central API gateway. Together they describe an architecture where the integration cost of adding a new AI agent to an enterprise stack approaches the cost of plugging in a USB device.</p>
+
+          <h2>What to do with this signal today</h2>
+
+          <p>That world is not fully here. Vendor implementations diverge at the edges, and MCP's authorization model — how agents prove identity to tools and how tools scope permissions — is still maturing. But the convergence is clear enough to act on:</p>
+
+          <ul>
+            <li><strong>Prefer MCP-native tools</strong> when evaluating new AI integrations. Proprietary SDKs lock in migration cost when the standard lands.</li>
+            <li><strong>Audit your current agent integrations</strong> for custom glue code. Each bespoke bridge is a maintenance liability in an MCP-native future.</li>
+            <li><strong>Track the security specification closely.</strong> MCP's authorization model is where enterprise requirements will push hardest — and where implementations will diverge first.</li>
+          </ul>
+
+          <p>The USB-C analogy has a limit. USB-C standardized a connector. MCP standardizes execution. The blast radius of a misconfigured agent call is larger than a misfired cable. But for enterprise architects building multi-vendor AI stacks, waiting for a perfect standard is the same as writing more glue code. The convergence already happened.</p>
+
+          <p>SaaS Squash helps B2B teams assess vendor AI integrations and build the governance layer before the standard hardens around assumptions that don't fit your stack. If you are about to commit to a proprietary agent SDK, that is the right conversation to start.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
