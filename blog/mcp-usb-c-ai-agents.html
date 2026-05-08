@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP Is Quietly Becoming the USB-C of AI Agents — SaaS Squash</title>
+  <meta name="description" content="ServiceNow, Cloudflare, and UiPath all shipped MCP support in the same week. That's not a coincidence — it's how industrial standards form. What enterprise architects need to know now.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">May 8, 2026</p>
+          <h1>MCP Is Quietly Becoming the USB-C of AI Agents</h1>
+          <p class="blog-dek">Three major enterprise platforms shipped Model Context Protocol support in a single week. That's not a coincidence — it's a standard being declared. Here's what it means for teams building multi-agent systems.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>On May 5, ServiceNow took the stage at Knowledge 2026 in Las Vegas and announced Action Fabric — an open platform letting any MCP-compatible agent connect to ServiceNow workflows without custom integration code. Two days later, Cloudflare wrapped its Agents Week with a parallel announcement: native MCP transport support in Workers AI. Meanwhile, UiPath's Automation Suite dropped Maestro, its multi-agent orchestration layer, built on the same protocol. Three enterprise platforms. One week. One spec. This is how industrial standards form: not by committee vote, but by simultaneous adoption under competitive pressure.</p>
+
+          <h2>What MCP actually solves</h2>
+
+          <p>Before MCP, every platform had its own tool integration format. Building an agent that worked across ServiceNow, Salesforce, and an internal data warehouse meant writing three different connectors, maintaining three different auth flows, and debugging three different schemas. Teams weren't building AI — they were building glue.</p>
+
+          <p>The Model Context Protocol, published by Anthropic in late 2024, defines a standard JSON-RPC interface: tools expose what they can do and what they accept; agents call them the same way regardless of vendor. The USB-C analogy holds because it's precise. Before the standard, every device needed a different cable. After, neither side needs to know anything about the other beyond the spec. An agent built on one model can reach a tool built by a different vendor with zero negotiation. That's the problem MCP solves, and it's a real one.</p>
+
+          <h2>ServiceNow's Action Fabric as the test case</h2>
+
+          <p>ServiceNow is the clearest case to follow because its installed base is enormous and its previous integration story was notoriously painful. Custom connectors for ServiceNow ITSM workflows typically required weeks of scoping, dedicated middleware, and ongoing maintenance as schemas changed.</p>
+
+          <p>Action Fabric inverts that model. A third-party AI agent — built on Claude, GPT-4, or an internally hosted model — can reach ITSM workflows, CMDB queries, and approval chains through a single MCP connection. ServiceNow demonstrated at Knowledge 2026 that the integration layer becomes a one-file MCP server definition rather than a multi-sprint implementation project. When the connection point is standardized, the work of adding a new agent to an existing tool stack shrinks from an infrastructure project to a configuration task. That shift compounds fast across a large enterprise toolchain.</p>
+
+          <h2>What enterprise architects should plan for now</h2>
+
+          <p>The risk is not that MCP fails to become the standard. The convergence this week makes that outcome look likely. The risk is building around it carelessly. A few constraints worth establishing before MCP proliferates internally:</p>
+
+          <ul>
+            <li><strong>MCP servers execute code on the host system.</strong> Treat each server as a process with a defined permission boundary, not transparent middleware. Scope what each server can read and write before it reaches production.</li>
+            <li><strong>The protocol has no built-in authentication standard.</strong> ServiceNow uses OAuth; Cloudflare uses API tokens; UiPath defers to the enterprise IdP. What your internal tools default to will be whatever the first developer chose. Establish one pattern now.</li>
+            <li><strong>Vendor lock-in shifts layers, not away.</strong> An agent that depends on 20 proprietary MCP servers is still locked in — to the tool vendors, not the model vendor. Audit which MCP servers would be hard to replace before they become load-bearing.</li>
+          </ul>
+
+          <p>Anthropic's ARR surpassing OpenAI's this year is partly explained by enterprise adoption of agentic workflows. The enterprises that moved earliest built on MCP. The ones still writing custom connectors are now building toward a standard that already exists and is accelerating.</p>
+
+          <p>SaaS Squash works with B2B teams to map where AI agents touch existing tool stacks and design the integration architecture to match. If your agent roadmap is blocked on connector work, that's the right problem to address first.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
