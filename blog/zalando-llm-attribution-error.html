@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When the incident report becomes the incident: LLM attribution errors in enterprise observability — SaaS Squash</title>
+  <meta name="description" content="Zalando's AI postmortem pipeline reliably blamed the wrong service — S3 was mentioned, so the model concluded S3 was guilty. What Surface Attribution Error reveals about LLMs in enterprise observability, and how to build pipelines that don't inherit the bias.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">May 11, 2026</p>
+          <h1>When the incident report becomes the incident: LLM attribution errors in enterprise observability</h1>
+          <p class="blog-dek">Zalando's SRE team fed two years of postmortems into an LLM pipeline to find recurring failure patterns. The model came back with a clear verdict: S3 caused it. S3 was mentioned in the report — as a healthy bystander. What happened next is a case study every team deploying AI against operational data needs to read.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>Zalando's SRE team had a problem that looked like a solution. Two years of postmortems, 2,000+ incident reports, and the pattern-finding work that would take a human analyst weeks could, in theory, be extracted automatically with an LLM. They built the pipeline. It worked. And it consistently blamed the wrong service.</p>
+
+          <p>The failure mode has a name: Surface Attribution Error. When an incident report mentioned S3 — even in passing, as background infrastructure — the model concluded S3 was implicated in the failure. Co-occurrence in text became causation in the output. Services that engineers wrote about frequently showed up as perpetual culprits, regardless of what actually broke.</p>
+
+          <h2>What went wrong in Zalando's pipeline</h2>
+          <p>The model was not randomly wrong. It was predictably wrong in the same direction: toward technologies that appeared in text most often. In postmortems, Postgres, Elasticsearch, and S3 are mentioned constantly — as healthy downstream participants, as context-setters, as bystanders. An LLM cannot distinguish "S3 was where corrupted records landed" from "S3 caused the corruption."</p>
+
+          <p>The business cost was subtle and real. Recommendations about where to invest resilience engineering — which services had systemic failure patterns — carried a bias toward services that got written about, not services that actually broke. At infrastructure scale, that is a costly misdirection.</p>
+
+          <p>Their solution: a multi-stage pipeline where each stage does exactly one thing. Summarization, then classification, then analysis, then pattern extraction — each receiving structured output from the previous stage, not raw prose. The current iteration runs on Claude Sonnet 4 via AWS Bedrock, with explicit negative prompting that prohibits inference and requires only stated connections to be flagged.</p>
+
+          <h2>Why this failure class won't be fixed by a better model</h2>
+          <p>Surface attribution is not a model quality problem. It is a semantic one. Text is lossy compression of what happened. Incident reports are written after the fact, under pressure, describing observations — not always causation. An LLM pattern-matching over that corpus inherits the gap.</p>
+
+          <p>Newer, more capable models make this same class of error. They make it more fluently, with higher-confidence prose attached, but the root cause is structural: correlation in text is not causation in systems. The surface area where LLMs look most useful — summarizing logs, postmortems, incident tickets — is exactly where this failure shows up most reliably.</p>
+
+          <h2>How to build around it</h2>
+          <ul>
+            <li><strong>Separate summarization from analysis.</strong> A stage that reduces text to facts should not also infer causes. Single-objective stages fail in predictable, debuggable ways.</li>
+            <li><strong>Write explicit prohibitions into system prompts:</strong> "Only flag connections explicitly stated in the text; do not infer causal relationships."</li>
+            <li><strong>Never pass raw prose into a recommendation stage.</strong> Classify into structure first, then run analysis against the structure — not against the narrative.</li>
+            <li><strong>Validate on labeled holdout data</strong> with known causal attributions before trusting pipeline output to influence infrastructure investment decisions.</li>
+          </ul>
+
+          <p>LLMs read what engineers wrote about a problem. They do not observe the system. Building around that constraint is not a limitation to paper over — it is the architecture that makes these pipelines trustworthy.</p>
+
+          <p>SaaS Squash helps B2B teams audit where their AI analysis pipelines inherit these biases and redesign the stages that matter. If your observability or incident tooling uses LLMs to surface patterns, that audit is the right starting point.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
