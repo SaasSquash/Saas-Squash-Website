@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jarrod Murray — SaaS Squash</title>
+  <meta name="description" content="Jarrod Murray, SaaS Squash AI. Contact: jarrod@saassquash.ai · 206-920-1778">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: var(--dark); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .card-wrap { width: 100%; max-width: 480px; }
+    .biz-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(12, 114, 119, 0.3);
+      border-radius: var(--radius-xl);
+      padding: 48px 40px;
+      box-shadow: var(--shadow-teal), 0 0 0 1px rgba(12,114,119,0.1);
+      text-align: center;
+    }
+    .biz-logo { margin: 0 auto 32px; }
+    .biz-logo img { height: 36px; width: auto; filter: brightness(0) invert(1); }
+    .biz-divider { width: 40px; height: 2px; background: var(--teal); margin: 20px auto; border-radius: 2px; }
+    .biz-name { font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 700; color: var(--white); letter-spacing: -0.02em; margin-bottom: 6px; }
+    .biz-org { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 36px; }
+    .biz-contacts { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+    .biz-contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      text-align: left;
+    }
+    .biz-contact-link:hover { background: rgba(12,114,119,0.12); border-color: var(--teal); color: var(--white); }
+    .biz-contact-icon { flex-shrink: 0; width: 36px; height: 36px; background: rgba(12,114,119,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .biz-contact-icon svg { width: 16px; height: 16px; fill: none; stroke: var(--teal); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .biz-contact-text { display: flex; flex-direction: column; gap: 1px; }
+    .biz-contact-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid-grey); }
+    .biz-contact-value { font-size: 0.9375rem; font-weight: 500; color: inherit; }
+    .biz-footer { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.22); }
+  </style>
+</head>
+<body>
+
+  <div class="card-wrap">
+    <div class="biz-card">
+
+      <div class="biz-logo">
+        <img src="images/logo-saassquash.png" width="160" height="44" alt="SaaS Squash" decoding="async">
+      </div>
+
+      <div class="biz-name">Jarrod Murray</div>
+      <div class="biz-org">SaaS Squash AI</div>
+      <div class="biz-divider"></div>
+
+      <div class="biz-contacts">
+
+        <a href="mailto:jarrod@saassquash.ai" class="biz-contact-link">
+          <div class="biz-contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          </div>
+          <div class="biz-contact-text">
+            <span class="biz-contact-label">Email</span>
+            <span class="biz-contact-value">jarrod@saassquash.ai</span>
+          </div>
+        </a>
+
+        <a href="tel:+12069201778" class="biz-contact-link">
+          <div class="biz-contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.22 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.55a16 16 0 0 0 5.54 5.54l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+          </div>
+          <div class="biz-contact-text">
+            <span class="biz-contact-label">Phone</span>
+            <span class="biz-contact-value">206-920-1778</span>
+          </div>
+        </a>
+
+        <a href="https://saassquash.ai" target="_blank" rel="noopener" class="biz-contact-link">
+          <div class="biz-contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="biz-contact-text">
+            <span class="biz-contact-label">Website</span>
+            <span class="biz-contact-value">saassquash.ai</span>
+          </div>
+        </a>
+
+      </div>
+
+      <p class="biz-footer">Legendary Structure for Modern Systems</p>
+
+    </div>
+  </div>
+
+</body>
+</html>
