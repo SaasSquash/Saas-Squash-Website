@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When Your Bot Speaks for You: The Hidden Cost of AI Without Guardrails — SaaS Squash</title>
+  <meta name="description" content="Air Canada's chatbot made a promise its policies didn't support — a court made them honor it anyway. Here's what that ruling means for any small business deploying AI without proper controls.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">May 15, 2026</p>
+          <h1>When Your Bot Speaks for You: The Hidden Cost of AI Without Guardrails</h1>
+          <p class="blog-dek">Air Canada's chatbot told a customer he could claim a bereavement discount after his trip. He did exactly that. A court ruled Air Canada was responsible for what its bot said — and ordered them to pay. The tool wasn't rogue. The problem was governance.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>In early 2024, a Canadian civil resolution tribunal ruled against Air Canada over something its AI chatbot said. A passenger named Jake Moffatt asked the airline's virtual assistant about bereavement fare policy before booking a last-minute flight. The bot told him he could apply for the discount retroactively after travel. He booked. He flew. He applied. Air Canada refused, calling the chatbot's guidance incorrect. The tribunal didn't accept that defense. The chatbot was Air Canada's system, running on Air Canada's website, answering Air Canada's customers. The airline was liable for what it said. They paid.</p>
+
+          <p>This wasn't sabotage. It wasn't a breach. The system did exactly what it was built to do — answer questions — but it hadn't been tested against the questions that matter most, and no one was watching when it went wrong.</p>
+
+          <h2>The small-business version is quieter, but the cost is the same</h2>
+          <p>Airline cases make the news. Small business AI mistakes rarely do, which makes them harder to learn from. But the pattern repeats constantly at smaller scale. A local service company deploys a chatbot to handle booking inquiries. The bot confidently quotes prices based on stale data, confirms availability it can't actually check, and promises next-day appointments during a fully booked week. No court ruling follows — just three frustrated customers, two disputed charges, and a Google review that sticks around. The AI didn't malfunction. It answered questions. It just didn't have the information or guardrails to answer them correctly, and no human was close enough to catch the gap before the damage was done. That's the core problem: AI was given authority it wasn't equipped to exercise. It could speak but couldn't verify. It could promise but couldn't fulfill.</p>
+
+          <h2>What responsible deployment actually looks like</h2>
+          <p>Getting this right doesn't require waiting for the technology to be perfect. It requires being specific about what the system can and cannot do <em>before</em> you point it at customers.</p>
+          <ul>
+            <li><strong>Define scope tightly.</strong> "Answer customer questions" is not a scope. "Answer questions from this approved list, and flag everything else for a human" is a guardrail. The difference is accountability.</li>
+            <li><strong>Test adversarially.</strong> Before going live, ask the system the ten questions you'd least want it to answer wrong: pricing, lead times, refund policy, what happens when something's out of stock. If any answer surprises you, fix it first.</li>
+            <li><strong>Build in escalation.</strong> Every customer-facing AI needs a clear path to a human for anything the system isn't certain about. "I'll connect you with our team" is not a failure state — it's a feature.</li>
+            <li><strong>Review regularly.</strong> AI trained on static information goes stale. If your policies or inventory change and the bot doesn't know, you own what it says.</li>
+          </ul>
+
+          <p>Air Canada's case didn't hinge on a technical failure. It hinged on a governance gap: deploying a system that could make commitments without any mechanism to ensure those commitments were accurate. That gap doesn't belong to large airlines. It's available at any business size. So is the fix. The businesses that do well with AI are the ones that treat it as a member of staff — one that needs clear boundaries, regular supervision, and a manager close enough to step in when something goes sideways.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
