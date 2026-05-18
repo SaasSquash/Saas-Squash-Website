@@ -948,9 +948,12 @@ a.btn.btn-outline:hover {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-bottom: 24px;
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .founder-card {
