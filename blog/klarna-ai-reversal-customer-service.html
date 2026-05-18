@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klarna's 700-Agent Reversal: What the Numbers Were Hiding — SaaS Squash</title>
+  <meta name="description" content="Klarna's AI assistant claimed to replace 700 agents. A year later, they were hiring humans again. What went wrong, and what B2B operators should take away.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">May 18, 2026</p>
+          <h1>Klarna's 700-Agent Reversal: What the Numbers Were Hiding</h1>
+          <p class="blog-dek">In February 2024, Klarna announced its AI assistant was handling the equivalent of 700 full-time agents. By spring 2025, they were hiring humans again. The CEO called it publicly. What the reversal reveals about how B2B operators should read AI automation metrics — and what they should not promise their boards.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>The OpenAI case study landed like a signal flare. Klarna's AI assistant had handled 2.3 million customer conversations in its first month — a 75% automation rate. The company had cut roughly 700 customer service roles. CEO Sebastian Siemiatkowski told anyone who would listen that "AI can already do all of the jobs that we, as humans, do." Enterprise operators across every sector filed the number away as a benchmark. If Klarna could do it at scale, so could they.</p>
+
+          <p>Then, in May 2025, Siemiatkowski gave an interview to Bloomberg. "We focused too much on efficiency and cost," he said. "The result was lower quality, and that's not sustainable." Klarna was piloting a new human-staffed model for customer service. The 700-agent headline quietly became a cautionary case study.</p>
+
+          <h2>What the 75% number was actually measuring</h2>
+          <p>The automation rate was real. So was the volume. What the headline obscured was what the 75% actually contained: password resets, order status checks, straightforward refund requests. Transactional tickets with deterministic answers. The AI handled those well. The remaining 25% — disputes, fraud claims, hardship cases, emotionally charged interactions — is where most of the dollar value sits in financial services. The AI didn't just struggle there; it actively made things worse. Customers reached the end of an AI conversation more frustrated than when they started, then had to repeat their entire situation to a human who had no context from the exchange. The handoff was broken. Klarna's internal quality scores dropped. Customer satisfaction followed.</p>
+
+          <p>This is the pattern that most automation metrics hide: volume and value are not the same thing. An AI that handles 75% of tickets by count may be touching 30% of total value at risk. Optimizing for the first number while ignoring the second produces exactly the outcome Klarna experienced.</p>
+
+          <h2>The governance failure underneath the metrics failure</h2>
+          <p>Klarna's problem wasn't the AI. It was the decision-making structure around it. No one owned quality the way cost was owned. There was no mechanism to catch degradation early — no customer satisfaction threshold that would trigger a human review, no escalation logic that preserved conversation context, no defined boundary between what the system should handle and what it should not. The AI was deployed with authority it wasn't equipped to exercise, in the same pattern Air Canada demonstrated with its bereavement fare chatbot.</p>
+
+          <p>What makes Klarna instructive is the CEO's candor. Most operators quietly patch the gaps or quietly re-hire without announcement. Siemiatkowski said the quiet part in public: cost was the primary evaluation factor, and that was a mistake. Any B2B operator running a similar calculation should ask the same question before deployment — what metric will catch quality problems before they compound?</p>
+
+          <h2>What responsible AI automation actually looks like</h2>
+          <p>The lesson isn't that AI customer service doesn't work. Klarna's 75% automation rate was genuinely valuable for the cases it covered. The lesson is that automation rate is a coverage metric, not a quality metric, and they measure different things.</p>
+          <ul>
+            <li><strong>Segment by case complexity before you set targets.</strong> High-volume, low-variance tickets are good candidates. Low-volume, high-stakes cases need human ownership with AI support, not the reverse.</li>
+            <li><strong>Design handoffs as a feature, not an edge case.</strong> Context must travel with the customer. An AI that can't pass a structured summary to the human who takes over isn't saving time — it's deferring it.</li>
+            <li><strong>Set quality thresholds that trigger review.</strong> If CSAT drops or escalation rates spike in AI-handled conversations, that's a production incident. Treat it as one.</li>
+            <li><strong>Own the definition of "done."</strong> Closing a ticket is not the same as resolving a problem. Track resolution, not closure.</li>
+          </ul>
+
+          <p>Klarna got the first part right and missed the second. The automation worked. The accountability structure around it didn't. For any operator building a similar deployment, that gap is the thing worth engineering for — before the board presentation, not after it.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
