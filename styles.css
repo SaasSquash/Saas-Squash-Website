@@ -762,6 +762,54 @@ a.btn.btn-outline:hover {
 .why-card h3 { margin-bottom: 12px; font-size: 1.0625rem; }
 .why-card p { font-size: 0.9rem; line-height: 1.7; }
 
+.why-subheading {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--slate);
+  margin: 48px 0 20px;
+}
+.why-subheading:first-of-type { margin-top: 0; }
+
+.why-step-num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.why-expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.why-list {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.why-list li {
+  font-size: 0.875rem;
+  color: var(--slate);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.6;
+}
+.why-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  background: var(--teal);
+  border-radius: 50%;
+}
+
 /* ── Proof table ───────────────────────────────────── */
 .proof-table {
   border: 1px solid var(--border);
@@ -1150,11 +1198,10 @@ a.btn.btn-outline:hover {
 .services-grid .fade-in:nth-child(3) { transition-delay: 0.2s; }
 .services-grid .fade-in:nth-child(4) { transition-delay: 0.3s; }
 
-.why-grid .fade-in:nth-child(2) { transition-delay: 0.08s; }
-.why-grid .fade-in:nth-child(3) { transition-delay: 0.16s; }
-.why-grid .fade-in:nth-child(4) { transition-delay: 0.24s; }
-.why-grid .fade-in:nth-child(5) { transition-delay: 0.32s; }
-.why-grid .fade-in:nth-child(6) { transition-delay: 0.4s; }
+.why-grid .fade-in:nth-child(2) { transition-delay: 0.1s; }
+.why-grid .fade-in:nth-child(3) { transition-delay: 0.2s; }
+
+.why-expertise-grid .fade-in:nth-child(2) { transition-delay: 0.1s; }
 
 .founders-grid .fade-in:nth-child(2) { transition-delay: 0.1s; }
 .founders-grid .fade-in:nth-child(3) { transition-delay: 0.2s; }
@@ -1167,6 +1214,7 @@ a.btn.btn-outline:hover {
 /* Tablet */
 @media (max-width: 1024px) {
   .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-expertise-grid { grid-template-columns: 1fr; }
   .founders-grid { grid-template-columns: 1fr; }
   .section-education .education-grid { grid-template-columns: 1fr; }
   .market-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1214,6 +1262,7 @@ a.btn.btn-outline:hover {
 
   /* Why */
   .why-grid { grid-template-columns: 1fr; }
+  .why-expertise-grid { grid-template-columns: 1fr; }
 
   /* Proof */
   .proof-head,
