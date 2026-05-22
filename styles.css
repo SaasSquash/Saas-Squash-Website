@@ -519,7 +519,7 @@ a.btn.btn-outline:hover {
 
 .pillar-num {
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--teal);
   letter-spacing: 0.08em;
