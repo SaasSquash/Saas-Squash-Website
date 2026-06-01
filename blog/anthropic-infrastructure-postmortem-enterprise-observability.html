@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7ST7CDYK3P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7ST7CDYK3P');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Fog of AI: Anthropic's Infrastructure Postmortem and the Enterprise Observability Gap | SaaS Squash</title>
+  <meta name="description" content="In August 2025, three simultaneous infrastructure bugs silently degraded Claude for seven weeks. Thirty percent of Claude Code users were affected before anyone knew. Here's what enterprise AI operations can learn.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">June 1, 2026</p>
+          <h1>The Fog of AI: Anthropic's Infrastructure Postmortem and the Enterprise Observability Gap</h1>
+          <p class="blog-dek">In August 2025, three simultaneous bugs silently degraded Claude for seven weeks. Thirty percent of Claude Code users were affected before Anthropic published a postmortem. The engineers debugging their prompts the entire time had no way to know the problem wasn't theirs.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>In August 2025, developers using Claude started noticing something was wrong. Responses arrived with random Thai characters embedded in English output. Code contained syntax errors the model had never made before. Logic collapsed mid-sentence. Engineers across teams rewrote their prompts, tuned their parameters, audited their system messages. None of it helped—because the problem was not in their code. Anthropic published a postmortem in October 2025 documenting three simultaneous infrastructure failures that had been silently degrading Claude across production for weeks.</p>
+
+          <h2>Three Bugs, One Hidden Surface</h2>
+          <p>The first failure ran from August 5 to September 18. A context window routing bug was sending 16% of Claude Sonnet 4 requests to servers configured for a different model tier. Responses came back from the wrong infrastructure, and every follow-up message in those conversations was stickily misrouted. Users saw subtle degradation—nothing that threw an obvious error, nothing that matched a known failure mode.</p>
+          <p>The second and third failures overlapped, running from late August through mid-September. A TPU misconfiguration caused the model to assign elevated probability to nonsense tokens, producing the garbled output engineers were chasing. Simultaneously, a compiler bug in the XLA:TPU inference framework was silently dropping tokens from the model's consideration during inference—meaning Claude was literally not reading part of every prompt during that window.</p>
+          <p>Thirty percent of Claude Code users were affected across the overlapping window. Anthropic identified and fixed each issue, but the timeline from onset to postmortem spans nearly seven weeks.</p>
+
+          <h2>Why You Can't Debug Your Way Out of Vendor Infrastructure</h2>
+          <p>The standard playbook for AI production issues—evaluate your prompts, check your system message, tune parameters, upgrade the model—is useless when the failure lives inside the vendor's inference pipeline. This is the observability gap practitioners rarely talk about.</p>
+          <p>You can instrument your application. You can log every request and response. You cannot see inside the TPU cluster or the routing layer between your API key and the model weights. When the problem lives there, all your telemetry tells you is that the output is wrong—not why.</p>
+          <p>The enterprise-specific risk compounds quickly. Long threads, multi-turn agents, and RAG pipelines all accumulate misrouted or token-dropped context. A single bad inference early in a conversation can poison every response that follows. And because the degradation is subtle—not a 500 error, not a timeout—it looks exactly like a prompt engineering problem.</p>
+
+          <h2>What This Means for Your AI Stack</h2>
+          <p>Enterprise AI operations need a layer of observability that treats vendor infrastructure as a risk surface, not a given. In practice, that means:</p>
+          <ul>
+            <li>Continuous performance benchmarks running against production outputs, not just at onboarding</li>
+            <li>Output validation pipelines that flag statistical anomalies—unexpected language distributions, token pattern shifts, response quality regressions</li>
+            <li>Multi-vendor fallback routes for critical workloads, not for cost reasons but because vendor-side outages are not theoretical</li>
+          </ul>
+          <p>Anthropic published the postmortem. Most vendors don't. The gap was real at 30% of production users for seven weeks. At that scale, most teams only knew they had a problem because they were watching closely. If you aren't, you won't.</p>
+          <p>The lesson isn't to distrust your AI vendor. It's that "the model is working" and "your AI stack is working" are two different claims. You need visibility into both.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
