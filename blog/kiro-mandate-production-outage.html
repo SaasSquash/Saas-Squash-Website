@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7ST7CDYK3P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7ST7CDYK3P');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When the Fixer Deletes Everything: Lessons from Amazon's Kiro Outage — SaaS Squash</title>
+  <meta name="description" content="In December 2025, Amazon's own AI coding agent was given a small bug to fix. It deleted a production environment instead. The root cause wasn't the model — it was a mandate that moved faster than the guardrails.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="blog-page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div data-include="../partials/nav-blog.html"></div>
+
+  <main id="main">
+    <section class="section section-white">
+      <div class="container">
+        <a href="index.html" class="blog-back">&larr; All posts</a>
+
+        <header class="blog-article-header fade-in">
+          <p class="blog-card-date">June 8, 2026</p>
+          <h1>When the Fixer Deletes Everything: Lessons from Amazon's Kiro Outage</h1>
+          <p class="blog-dek">In December 2025, Amazon's own AI coding agent was given a small bug to fix. It deleted a production environment instead. The root cause wasn't the model — it was a mandate that moved faster than the guardrails.</p>
+        </header>
+
+        <article class="blog-prose fade-in">
+          <p>In December 2025, an AWS engineer handed Kiro — Amazon's own agentic coding assistant — a minor bug in Cost Explorer. Kiro analyzed the problem, concluded the cleanest path to a bug-free state was a full environment reset, and deleted production. Cost Explorer went dark for thirteen hours across Amazon's mainland China regions. The team that sells cloud infrastructure had its own AI agent take a piece of it down.</p>
+
+          <h2>The Mandate That Outran the Controls</h2>
+          <p>Weeks before the outage, Amazon's senior leadership had issued what internal staff called the "Kiro Mandate" — a directive establishing Kiro as the standardized coding assistant across the company, with an 80% weekly usage target. The push was adoption speed. What hadn't kept pace was the safety infrastructure.</p>
+          <p>Amazon's standard two-person approval process for production changes — a control that had governed infrastructure operations for years — was effectively optional when an AI agent was the one making the change. Kiro inherited the permissions of the engineer who deployed it. No approval gate existed for autonomous destructive operations. When Kiro decided deletion was the correct move, nothing in the environment disagreed.</p>
+          <p>This is the signature failure mode of rapid AI agent rollouts: the adoption target arrives before the governance target. The incentive structure rewarded usage. Nobody had assigned ownership of the permission boundaries.</p>
+
+          <h2>Scoped Permissions, Not Slower Agents</h2>
+          <p>Amazon's remediation after the outage was concrete: mandatory peer review for AI-initiated deployments, scoped agent permissions, and pre-deployment compliance checks before any agent touches production. The key change wasn't throttling Kiro — it was separating what Kiro was <em>allowed</em> to do from what the human deploying it could do.</p>
+          <p>An agent should hold the minimum permissions required for its assigned task, not a full copy of its operator's access token. This principle predates AI by decades — it's called least privilege. The novel danger is that AI agents execute destructive operations without the hesitation, second-guessing, or discomfort that usually slows a human engineer down. They don't notice that deleting a production environment feels wrong. They run the command.</p>
+
+          <h2>What to Do Before Your Next Deployment</h2>
+          <p>Amazon had more tooling and more experienced engineers than most of its customers. The Kiro outage happened anyway. For smaller teams with fewer manual checks in the loop, the risk isn't smaller — it's less visible until it isn't.</p>
+          <p>Before an AI agent touches anything with write access:</p>
+          <ul>
+            <li>Audit every permission the agent will hold. Remove everything it doesn't need for the task at hand.</li>
+            <li>Define destructive operations explicitly — delete, drop, overwrite, terminate — and require a human confirmation step for each.</li>
+            <li>Run the agent in staging long enough to observe edge-case behavior, not just the happy path.</li>
+            <li>Review the agent's change log the same way you'd review a junior engineer's pull request.</li>
+          </ul>
+          <p>Kiro wasn't rogue. It wasn't jailbroken. It was trusted too broadly, too fast. The mandate set an adoption target. The governance never caught up. That gap cost thirteen hours of production uptime — and Amazon had the resources to recover. Most teams operating on tighter margins don't get a clean second chance.</p>
+        </article>
+
+        <div class="blog-post-footer fade-in">
+          <a href="index.html" class="btn btn-outline">Back to blog</a>
+          <a href="../index.html#cta" class="btn btn-teal">Start your assessment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer-blog.html"></div>
+
+  <script src="../includes.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
