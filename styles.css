@@ -549,6 +549,106 @@ a.btn.btn-outline:hover {
   border-radius: 0 var(--radius) var(--radius) 0;
 }
 
+/* ── Testimonials ──────────────────────────────────── */
+#testimonials {
+  padding: 72px 0;
+}
+#testimonials .section-header {
+  margin-bottom: 32px;
+}
+
+.testimonials-scroll {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(12,114,119,0.35) transparent;
+  margin: 0 -24px;
+  padding: 4px 24px 12px;
+}
+.testimonials-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.testimonials-scroll::-webkit-scrollbar-thumb {
+  background: rgba(12,114,119,0.35);
+  border-radius: 999px;
+}
+
+.testimonials-grid {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+}
+
+.testimonial-card {
+  margin: 0;
+  flex: 0 0 min(85vw, 420px);
+  scroll-snap-align: start;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+.testimonial-card:hover {
+  box-shadow: 0 6px 24px rgba(12,114,119,0.08);
+  border-color: rgba(12,114,119,0.3);
+}
+
+.testimonial-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--teal);
+}
+
+.testimonial-quote {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--slate-light);
+  font-style: italic;
+  margin: 0 0 20px;
+  flex: 1;
+}
+
+.testimonial-footer {
+  margin-top: auto;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
+.testimonial-author {
+  display: block;
+  font-style: normal;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--slate);
+  margin-bottom: 4px;
+}
+
+.testimonial-role {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.testimonial-role a {
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.testimonial-role a:hover {
+  color: var(--teal-hover);
+}
+
 /* ── Services ──────────────────────────────────────── */
 .services-grid {
   display: grid;
@@ -1208,6 +1308,8 @@ a.btn.btn-outline:hover {
 
 .education-grid .fade-in:nth-child(2) { transition-delay: 0.1s; }
 .education-grid .fade-in:nth-child(3) { transition-delay: 0.2s; }
+
+.testimonials-grid .fade-in:nth-child(2) { transition-delay: 0.1s; }
 
 /* ── Responsive ────────────────────────────────────── */
 
